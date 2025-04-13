@@ -1,59 +1,60 @@
-# YtComparator
+# YouTube Channel Comparator
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
+![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
+![Node.js](https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/express-%23404d59.svg?style=for-the-badge&logo=express&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+[![License](https://img.shields.io/github/license/SEU_USUARIO/youtube-channel-comparator?style=for-the-badge)](./LICENSE)
 
-## Development server
+This project is a complete example of how to build an SEO‑optimized, server‑side rendered application using **Angular v19**, **Angular Universal** and **Express** to consume the **YouTube Data API v3**. It lets you compare two YouTube channels side‑by‑side—showing subscribers, total videos, total views—and displays the latest 3 videos from each channel with their engagement metrics (likes & comments).
 
-To start a local development server, run:
+## Table of Contents
 
-```bash
-ng serve
-```
+- [Technologies](#technologies)  
+- [Features](#features)  
+- [Wireframe](#wireframe)  
+- [Installation](#installation)  
+- [Configuration](#configuration)  
+- [Usage](#usage)  
+- [Project Structure](#project-structure)  
+- [Contributing](#contributing)  
+- [License](#license)  
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Technologies
 
-## Code scaffolding
+- **Angular v19** & **Angular Universal** for SSR and SEO  
+- **Express** as a “thin” backend to proxy and cache YouTube API requests  
+- **YouTube Data API v3** for channel & video statistics  
+- **Node.js** & **TypeScript**  
+- **node-cache** (LRU) for in‑memory caching  
+- **@angular/pwa** (optional) for PWA support  
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Features
 
-```bash
-ng generate component component-name
-```
+- Autocomplete search for two YouTube channels  
+- Side‑by‑side comparison of:
+  - Subscriber count  
+  - Total video count  
+  - Total view count  
+- Display of the latest 3 videos per channel, each with:
+  - Thumbnail  
+  - Title  
+  - Like count  
+  - Comment count  
+- Server‑Side Rendering for full SEO support  
+- Dynamic `<title>` and `<meta>` tags per comparison  
+- Express‑level caching to minimize YouTube API quota usage  
+- Responsive design & optional PWA offline support  
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Wireframe
 
-```bash
-ng generate --help
-```
+> **Placeholder:** Add your wireframe image here (e.g. `.github/wireframe.png`)
 
-## Building
+![Wireframe](.github/wireframe.png)
 
-To build the project run:
+## Installation
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/SEU_USUARIO/youtube-channel-comparator.git
+   cd youtube-channel-comparator
