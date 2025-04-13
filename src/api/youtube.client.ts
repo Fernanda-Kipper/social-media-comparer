@@ -61,7 +61,7 @@ export interface ChannelInfo {
     }
 }
 
-export async function listPublicVideos(
+export async function searchChannels(
     query: string,
     maxResults = 5
   ): Promise<ResourceInfo[]> {

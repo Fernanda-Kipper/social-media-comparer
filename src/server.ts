@@ -8,7 +8,7 @@ import express from 'express';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { listPublicVideos, getChannelDetails } from './api/youtube.client.js';
+import { searchChannels, getChannelDetails } from './api/youtube.client.js';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
@@ -24,9 +24,9 @@ app.get('/api/search', (req, res) => {
     return;
   }
   
-  listPublicVideos(query || '')
-    .then((videos) => {
-      res.json(videos);
+  searchChannels(query || '')
+    .then((channels) => {
+      res.json(channels);
     })
     .catch((error) => { 
       console.log(error);
