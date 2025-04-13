@@ -13,11 +13,7 @@ This project is a complete example of how to build an SEO‑optimized, server‑
 - [Technologies](#technologies)  
 - [Features](#features)  
 - [Wireframe](#wireframe)  
-- [Installation](#installation)  
-- [Configuration](#configuration)  
 - [Usage](#usage)  
-- [Project Structure](#project-structure)  
-- [Contributing](#contributing)  
 - [License](#license)  
 
 ## Technologies
@@ -48,13 +44,48 @@ This project is a complete example of how to build an SEO‑optimized, server‑
 
 ## Wireframe
 
-> **Placeholder:** Add your wireframe image here (e.g. `.github/wireframe.png`)
 
 ![Wireframe](.github/wireframe.png)
 
-## Installation
+## Usage
 
 1. **Clone the repository**  
-   ```bash
-   git clone https://github.com/SEU_USUARIO/youtube-channel-comparator.git
-   cd youtube-channel-comparator
+```bash
+   git clone https://github.com/Fernanda-Kipper/social-media-comparer
+   cd social-media-comparer
+```
+
+2. Configure your environment variables, using .env.example
+3. Run the application
+
+```bash
+npm start
+```
+
+## License
+
+### Educational Use License (EUL) 1.0
+
+Copyright (c) 2025 Your Name
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to use, copy, modify, and distribute the Software **solely for non‑commercial, educational, or personal study purposes** (“Permitted Purpose”), subject to the following conditions:
+
+1. **Non‑Commercial Use Only**  
+   The Software may **not** be used, sold, leased, sublicensed, or otherwise exploited for any commercial purpose or in any commercial product or service.
+
+2. **Redistribution**  
+   - Redistributions of source code must retain the above copyright notice, this list of conditions, and the full text of this License.  
+   - Redistributions in binary form must reproduce the above copyright notice, this list of conditions, and the full text of this License in the documentation and/or other materials provided with the distribution.
+
+3. **No Warranty**  
+   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+4. **Liability**  
+   In no event will the authors or copyright holders be held liable for any direct, indirect, incidental, special, exemplary, or consequential damages arising in any way out of the use of this Software.
+
+5. **Termination**  
+   This License and the rights granted hereunder will terminate automatically if you fail to comply with any of its terms. Upon termination, you must cease all use and distribution of the Software.
+
+---
+
+For the full text, see the [LICENSE](./LICENSE) file.  
