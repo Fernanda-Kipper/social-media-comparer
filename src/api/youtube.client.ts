@@ -3,11 +3,9 @@ import { google , youtube_v3 } from 'googleapis'
 const API_KEY = process.env['YT_API_KEY'];
 const BASE_URL = 'https://www.googleapis.com/youtube/v3';
 
-console.log('API_KEY: %s', API_KEY);
-
 const youtube = google.youtube({
   version: 'v3',
-  auth: API_KEY,
+  auth: "AIzaSyCdLboa5EB6xDTx22zzhhZFLCGSQoPeTFc",
 }) as youtube_v3.Youtube;
 
 

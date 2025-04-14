@@ -1,1 +1,57 @@
-<p>comparer works!</p>
+<div class="form-wrapper">
+    <div class="input-group">
+      <label for="channelA">Canal A:</label>
+      <input
+        id="channelA"
+        type="text"
+        [value]="queryA()"
+        (input)="updateQueryA($any($event.target).value)"
+        placeholder="Digite o nome do canal A"
+      />
+  
+      @if(channelAResults.value()?.length) {
+        <ul>
+        @for(channel of channelAResults.value(); track channel.id.channelId){
+            <li
+            (click)="selectedChannelA.set(channel.id.channelId)"
+            class="channel-option"
+          >
+            {{ channel.snippet.channelTitle }}
+          </li>
+        }
+        </ul>
+      }
+    </div>
+  
+    <div class="input-group">
+      <label for="channelB">Canal B:</label>
+      <input
+        id="channelB"
+        type="text"
+        [value]="queryB()"
+        (input)="updateQueryB($any($event.target).value)"
+        placeholder="Digite o nome do canal B"
+      />
+  
+      @if(channelBResults.value()?.length) {
+        <ul>
+        @for(channel of channelBResults.value(); track channel.id.channelId){
+            <li
+            (click)="selectedChannelB.set(channel.id.channelId)"
+            class="channel-option"
+          >
+            {{ channel.snippet.channelTitle }}
+          </li>
+        }
+        </ul>
+      }
+    </div>
+  
+    <button
+      [disabled]="!selectedChannelA() || !selectedChannelB()"
+      (click)="compare()"
+    >
+      Compare
+    </button>
+  </div>
+  

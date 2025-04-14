@@ -49,6 +49,6 @@ export interface ChannelInfo {
 }
 
 export interface ComparerInfo {
-    channelA: ChannelInfo;
-    channelB: ChannelInfo;
+    channelA: ChannelInfo | null;
+    channelB: ChannelInfo | null;
 }
