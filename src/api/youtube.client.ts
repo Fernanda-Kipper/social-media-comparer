@@ -5,7 +5,7 @@ const BASE_URL = 'https://www.googleapis.com/youtube/v3';
 
 const youtube = google.youtube({
   version: 'v3',
-  auth: "AIzaSyCdLboa5EB6xDTx22zzhhZFLCGSQoPeTFc",
+  auth: process.env["YT_API_KEY"],
 }) as youtube_v3.Youtube;
 
 
@@ -82,6 +82,12 @@ export async function getChannelDetails(channelId: string){
         part: ['snippet', 'statistics', 'brandingSettings'],
         id: [channelId],
     });
+
+    // TODO: RETURN 3 RECENT VIDEOS
+    const videosResponse = await youtube.activities.list({
+        channelId: channelId,
+        part: ['snippet', 'contentDetails']
+    })
 
     if (!res.data.items) {
         return [];
