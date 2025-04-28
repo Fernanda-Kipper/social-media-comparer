@@ -1,0 +1,92 @@
+<div class="channel-card">
+    <div class="channel-header">
+      <img 
+        [src]="channelAData().thumbnails.default.url" 
+        [alt]="channelAData.snippet.title"
+        class="channel-avatar"
+      >
+      <div class="channel-info">
+        <h2 class="channel-name">{{ channelAData.snippet.title }}</h2>
+        <p class="channel-username">@{{ channelAData.snippet.customUrl }}</p>
+      </div>
+    </div>
+
+    <div class="channel-metrics">
+      <div class="metric">
+        <span class="metric-value">{{ formatNumber(channelAData.statistics.subscriberCount) }}</span>
+        <span class="metric-label">Subscribers</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value">{{ formatNumber(channelAData.statistics.videoCount) }}</span>
+        <span class="metric-label">Videos</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value">{{ formatNumber(channelAData.statistics.viewCount) }}</span>
+        <span class="metric-label">Views</span>
+      </div>
+    </div>
+
+    <div class="channel-content">
+      <h3 class="content-title">Recent Content</h3>
+      <div class="content-list">
+        <p>lista de conteudos</p>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+  <div class="channel-card">
+    <div class="channel-header">
+      <img 
+        [src]="channelBData.snippet.thumbnails.default.url" 
+        [alt]="channelBData.snippet.title"
+        class="channel-avatar"
+      >
+      <div class="channel-info">
+        <h2 class="channel-name">{{ channelBData.snippet.title }}</h2>
+        <p class="channel-username">@{{ channelBData.snippet.customUrl }}</p>
+      </div>
+    </div>
+
+    <div class="channel-metrics">
+      <div class="metric">
+        <span class="metric-value">{{ formatNumber(channelBData.statistics.subscriberCount) }}</span>
+        <span class="metric-label">Subscribers</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value">{{ formatNumber(channelBData.statistics.videoCount) }}</span>
+        <span class="metric-label">Videos</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value">{{ formatNumber(channelBData.statistics.viewCount) }}</span>
+        <span class="metric-label">Views</span>
+      </div>
+    </div>
+
+    <div class="channel-content">
+      <h3 class="content-title">Recent Content</h3>
+      <div class="content-list">
+        @if (channelBData.recentVideos) {
+          @for (video of channelBData.recentVideos; track video.id) {
+            <div class="content-item">
+              <img 
+                [src]="video.snippet.thumbnails.default.url" 
+                [alt]="video.snippet.title"
+                class="content-thumbnail"
+              >
+              <div class="content-details">
+                <h4 class="content-name">{{ video.snippet.title }}</h4>
+                <div class="content-metrics">
+                  <span>{{ formatNumber(video.statistics.likeCount) }} likes</span>
+                  <span>{{ formatNumber(video.statistics.commentCount) }} comments</span>
+                </div>
+              </div>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  </div>

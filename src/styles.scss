@@ -1,2 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @use "tailwindcss";
+
+html {
+    background: #fff;
+    padding: 32px;
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    color: #222222;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+  
+body, html {
+    background: #fff;
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    color: #222222;
+}
+  
