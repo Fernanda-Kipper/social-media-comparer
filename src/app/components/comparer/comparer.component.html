@@ -1,57 +1,185 @@
-<div class="form-wrapper">
-    <div class="input-group">
-      <label for="channelA">Canal A:</label>
+<header class="sc-header">
+  <div class="sc-header__left">
+    <span class="sc-header__logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;"><rect x="2" y="14" width="4" height="10" rx="2" fill="#007BFF"/><rect x="8" y="8" width="4" height="16" rx="2" fill="#007BFF"/><rect x="14" y="4" width="4" height="20" rx="2" fill="#007BFF"/><rect x="20" y="2" width="4" height="22" rx="2" fill="#007BFF"/></svg>
+      <span class="sc-header__brand">Social Comparator</span>
+    </span>
+  </div>
+  <nav class="sc-header__right">
+    <a href="#" class="sc-header__link">Dashboard</a>
+    <a href="#" class="sc-header__link">History</a>
+    <a href="#" class="sc-header__link">Settings</a>
+  </nav>
+</header>
+
+<div class="content-wrapper">
+  <h1 class="page-title">Compare Social Profiles</h1>
+
+<div class="search-container">
+  <div class="search-group">
+    <div class="search-input-wrapper">
       <input
-        id="channelA"
         type="text"
+        class="search-input"
         [value]="queryA()"
         (input)="updateQueryA($any($event.target).value)"
-        placeholder="Digite o nome do canal A"
-      />
-  
-      @if(channelAResults.value()?.length) {
-        <ul>
-        @for(channel of channelAResults.value(); track channel.id.channelId){
-            <li
-            (click)="selectedChannelA.set(channel.id.channelId)"
-            class="channel-option"
+        placeholder="Search profile 1..."
+      >
+      <div class="social-icons">
+        <button 
+          class="social-icon youtube" 
+          [class.selected]="selectedNetwork() === 'youtube'"
+          (click)="setNetwork('youtube')"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M23.5 6.2c-.3-1-1.1-1.8-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.1 0 12 0 12s0 3.9.5 5.8c.3 1 1.1 1.8 2.1 2.1 1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z" fill="#FF0000"/><path d="M9.6 15.6V8.4l6.4 3.6-6.4 3.6z" fill="#fff"/></svg>
+        </button>
+        <button 
+          class="social-icon instagram disabled" 
+          [class.selected]="selectedNetwork() === 'instagram'"
+          disabled
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2-.1-1.3-.1-1.6-.1-4.8 0-3.2 0-3.6.1-4.9.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4 1.3-.1 1.6-.1 4.9-.1zm0-2.2c-3.3 0-3.7 0-5 .1-1.3.1-2.2.3-3 .6-.8.3-1.5.7-2.1 1.4-.7.7-1.1 1.3-1.4 2.1-.3.8-.5 1.7-.6 3-.1 1.3-.1 1.7-.1 5s0 3.7.1 5c.1 1.3.3 2.2.6 3 .3.8.7 1.5 1.4 2.1.7.7 1.3 1.1 2.1 1.4.8.3 1.7.5 3 .6 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.3-.1 2.2-.3 3-.6.8-.3 1.5-.7 2.1-1.4.7-.7 1.1-1.3 1.4-2.1.3-.8.5-1.7.6-3 .1-1.3.1-1.7.1-5s0-3.7-.1-5c-.1-1.3-.3-2.2-.6-3-.3-.8-.7-1.5-1.4-2.1-.7-.7-1.3-1.1-2.1-1.4-.8-.3-1.7-.5-3-.6-1.3-.1-1.7-.1-5-.1z" fill="#E4405F"/><path d="M12 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z" fill="#E4405F"/><circle cx="18.4" cy="5.6" r="1.4" fill="#E4405F"/></svg>
+        </button>
+      </div>
+    </div>
+    @if (channelAResults.value()?.length && showResultsA()) {
+      <ul class="search-results">
+        @for (channel of channelAResults.value(); track channel.id.channelId) {
+          <li
+            (click)="selectChannelA(channel)"
+            class="search-result-item"
           >
             {{ channel.snippet.channelTitle }}
           </li>
         }
-        </ul>
-      }
-    </div>
-  
-    <div class="input-group">
-      <label for="channelB">Canal B:</label>
+      </ul>
+    }
+  </div>
+
+  <div class="search-group">
+    <div class="search-input-wrapper">
       <input
-        id="channelB"
         type="text"
+        class="search-input"
         [value]="queryB()"
         (input)="updateQueryB($any($event.target).value)"
-        placeholder="Digite o nome do canal B"
-      />
-  
-      @if(channelBResults.value()?.length) {
-        <ul>
-        @for(channel of channelBResults.value(); track channel.id.channelId){
-            <li
-            (click)="selectedChannelB.set(channel.id.channelId)"
-            class="channel-option"
+        placeholder="Search profile 2..."
+      >
+      <div class="social-icons">
+        <button 
+          class="social-icon youtube" 
+          [class.selected]="selectedNetwork() === 'youtube'"
+          (click)="setNetwork('youtube')"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M23.5 6.2c-.3-1-1.1-1.8-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.1 0 12 0 12s0 3.9.5 5.8c.3 1 1.1 1.8 2.1 2.1 1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z" fill="#FF0000"/><path d="M9.6 15.6V8.4l6.4 3.6-6.4 3.6z" fill="#fff"/></svg>
+        </button>
+        <button 
+          class="social-icon instagram disabled" 
+          [class.selected]="selectedNetwork() === 'instagram'"
+          disabled
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2-.1-1.3-.1-1.6-.1-4.8 0-3.2 0-3.6.1-4.9.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4 1.3-.1 1.6-.1 4.9-.1zm0-2.2c-3.3 0-3.7 0-5 .1-1.3.1-2.2.3-3 .6-.8.3-1.5.7-2.1 1.4-.7.7-1.1 1.3-1.4 2.1-.3.8-.5 1.7-.6 3-.1 1.3-.1 1.7-.1 5s0 3.7.1 5c.1 1.3.3 2.2.6 3 .3.8.7 1.5 1.4 2.1.7.7 1.3 1.1 2.1 1.4.8.3 1.7.5 3 .6 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.3-.1 2.2-.3 3-.6.8-.3 1.5-.7 2.1-1.4.7-.7 1.1-1.3 1.4-2.1.3-.8.5-1.7.6-3 .1-1.3.1-1.7.1-5s0-3.7-.1-5c-.1-1.3-.3-2.2-.6-3-.3-.8-.7-1.5-1.4-2.1-.7-.7-1.3-1.1-2.1-1.4-.8-.3-1.7-.5-3-.6-1.3-.1-1.7-.1-5-.1z" fill="#E4405F"/><path d="M12 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z" fill="#E4405F"/><circle cx="18.4" cy="5.6" r="1.4" fill="#E4405F"/></svg>
+        </button>
+      </div>
+    </div>
+    @if (channelBResults.value()?.length && showResultsB()) {
+      <ul class="search-results">
+        @for (channel of channelBResults.value(); track channel.id.channelId) {
+          <li
+            (click)="selectChannelB(channel)"
+            class="search-result-item"
           >
             {{ channel.snippet.channelTitle }}
           </li>
         }
-        </ul>
-      }
-    </div>
-  
-    <button
-      [disabled]="!selectedChannelA() || !selectedChannelB()"
-      (click)="compare()"
-    >
-      Compare
-    </button>
+      </ul>
+    }
   </div>
+</div>
+
+<button
+  class="compare-button"
+  [disabled]="!selectedChannelA() || !selectedChannelB()"
+  (click)="compare()"
+>
+  Compare
+</button>
+
+@if (isComparerMode()) {
+  <div class="comparison-container">
+    @if (channelAData()) {
+      <div class="channel-card">
+        <div class="channel-header">
+          <img 
+            [src]="channelAData()?.snippet?.thumbnails?.default?.url" 
+            [alt]="channelAData()?.snippet?.title"
+            class="channel-avatar"
+          >
+          <div class="channel-info">
+            <h2 class="channel-name">{{ channelAData()?.snippet?.title }}</h2>
+            <p class="channel-username">{{"@influencer"}}</p>
+          </div>
+        </div>
+    
+        <div class="channel-metrics">
+          <div class="metric">
+            <span class="metric-value">{{ formatNumber(channelAData()?.statistics?.subscriberCount) }}</span>
+            <span class="metric-label">Subscribers</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">{{ formatNumber(channelAData()?.statistics?.videoCount) }}</span>
+            <span class="metric-label">Videos</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">{{ formatNumber(channelAData()?.statistics?.viewCount) }}</span>
+            <span class="metric-label">Views</span>
+          </div>
+        </div>
+        <div class="channel-content">
+          <h3 class="content-title">Recent Content</h3>
+          <div class="content-list">
+            <p>lista de conteudos</p>
+          </div>
+        </div>
+    </div>
+    }
+
+    @if (channelBData()) {
+      <div class="channel-card">
+        <div class="channel-header">
+          <img 
+            [src]="channelBData()?.snippet?.thumbnails?.default?.url" 
+            [alt]="channelBData()?.snippet?.title"
+            class="channel-avatar"
+          >
+          <div class="channel-info">
+            <h2 class="channel-name">{{ channelBData()?.snippet?.title }}</h2>
+            <p class="channel-username">{{ "@influencer" }}</p>
+          </div>
+        </div>
+    
+        <div class="channel-metrics">
+          <div class="metric">
+            <span class="metric-value">{{ formatNumber(channelBData()?.statistics?.subscriberCount) }}</span>
+            <span class="metric-label">Subscribers</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">{{ formatNumber(channelBData()?.statistics?.videoCount) }}</span>
+            <span class="metric-label">Videos</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">{{ formatNumber(channelBData()?.statistics?.viewCount) }}</span>
+            <span class="metric-label">Views</span>
+          </div>
+        </div>
+    
+        <div class="channel-content">
+          <h3 class="content-title">Recent Content</h3>
+            <p>videos list</p>
+        </div>
+      </div>
+    }
+  </div>
+}
+</div>
   
